@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="590691bf-80cf-4e2c-9836-c2f9377ca63c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="TongDoanhThu" uuid="779a52e5-8de0-4dda-b705-d63a8ec9ec7c">
+		<queryString language="SQL">
+			<![CDATA[ select * from HoaDonBan]]>
+		</queryString>
+		<field name="MaDonHang" class="java.lang.String"/>
+		<field name="MaNV" class="java.lang.String"/>
+		<field name="MaKH" class="java.lang.String"/>
+		<field name="NgayBan" class="java.sql.Timestamp"/>
+		<field name="TongTien" class="java.lang.Integer"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select SUM(TongTien) as TongDoanhThu from HoaDonBan]]>
+	</queryString>
+	<field name="TongDoanhThu" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="23" width="555" height="20" uuid="93b46315-d3aa-4bce-a24c-130c0316d0b9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG DOANH THU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="55" width="45" height="20" uuid="c64345c0-0eda-410c-98c1-5e5c5a7bba87"/>
+				<text><![CDATA[Đà Nẵng,]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="442" y="55" width="100" height="20" uuid="9ffd6846-4c2e-4ef5-969a-3f23dab744b0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="120" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="54" y="0" width="360" height="120" uuid="aac21290-6edf-49fb-84b7-3d33fa34914b"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="TongDoanhThu" uuid="5aa11dab-f433-458a-9d41-a4287156daa7">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="428775af-d493-4a18-a04d-65579fb5b1d4">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="548695df-f60d-45b9-be1d-f434f284f6bf"/>
+								<text><![CDATA[MaDonHang]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="87860155-8323-4e03-b5f3-700faffedf7b"/>
+								<textFieldExpression><![CDATA[$F{MaDonHang}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="40026b69-828b-4abc-9037-2dbfea214812">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="f904c42e-4fcc-4203-bf20-bf65b3e8fb66"/>
+								<text><![CDATA[MaNV]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="34147c6c-bc0f-4286-990c-d4bfde262209"/>
+								<textFieldExpression><![CDATA[$F{MaNV}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="4a14ca01-ac51-49d8-988e-de901ff3439d">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="55701c84-187a-49f8-8ae2-660af5a26e27"/>
+								<text><![CDATA[MaKH]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="1d05e792-dd22-431f-8a3b-c3b39e928925"/>
+								<textFieldExpression><![CDATA[$F{MaKH}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="c385afb2-1cf8-492a-b00f-d53fd71a0425">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e0be98dc-482e-449f-8455-d51a4d67f9cd"/>
+								<text><![CDATA[NgayBan]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="61ec8bbc-b82a-4ee9-aeb7-a7c9a1dc1268"/>
+								<textFieldExpression><![CDATA[$F{NgayBan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a39c972d-5c45-41ce-acba-d39bfc4b1bca">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="ba776885-f77d-4137-b971-578f2c20574f"/>
+								<text><![CDATA[TongTien]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="0579d681-e054-4cab-849b-a5a6cc47bd51"/>
+								<textFieldExpression><![CDATA[$F{TongTien}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="416" y="17" width="100" height="20" uuid="436d5dce-fd28-4f65-b3fd-24b6989202e5"/>
+				<textFieldExpression><![CDATA[$F{TongDoanhThu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="326" y="17" width="84" height="20" uuid="28213228-f46e-45cf-abb6-88e8a026a793"/>
+				<text><![CDATA[Tổng Doanh Thu:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
